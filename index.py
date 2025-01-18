@@ -10,8 +10,8 @@ from routes.Platform_bp import platform_bp
 from routes.User_bp import user_bp
 from routes.Rating_bp import rating_bp
 
-# Inisialisasi Flask-RESTX dan Swagger
-api = Api(app, doc='/docs')  # 'doc' adalah endpoint untuk Swagger UI
+# # Inisialisasi Flask-RESTX dan Swagger
+# api = Api(app, doc='/docs')  # 'doc' adalah endpoint untuk Swagger UI
 jwt = JWTManager(app)
 
 @app.before_request
