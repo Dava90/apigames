@@ -18,7 +18,7 @@ def get_developer(id_dev):
 @jwt_required()
 def add_developer():
     data = request.get_json()
-    developer = Developer(name=data['nama_dev'])  # Using 'name' as per the column in the model
+    developer = Developer(nama_dev=data['nama_dev'])  # Using 'name' as per the column in the model
     db.session.add(developer)
     db.session.commit()
     return jsonify({'message': 'Developer added successfully!', 'developer': developer.to_dict()}), 201
@@ -30,7 +30,7 @@ def update_developer(id_dev):
         return jsonify({'status': 'error', 'message': 'Developer not found'}), 404
 
     data = request.get_json()
-    developer.name = data.get('name_dev', developer.name)  # Ensure the 'name' field is updated
+    developer.nama_dev = data.get('nama_dev', developer.nama_dev)  # Ensure the 'name' field is updated
     
     db.session.commit()
     return jsonify({'message': 'Developer updated successfully!', 'developer': developer.to_dict()})
@@ -44,8 +44,8 @@ def patch_developer(id_dev):
     updated_data = request.get_json()
 
     # Update only the fields that exist in the request
-    if 'name' in updated_data:
-        developer.name = updated_data['name']  # Update 'name' field
+    if 'nama_dev' in updated_data:
+        developer.nama_dev = updated_data['nama_dev']  # Update 'name' field
     
     db.session.commit()
     return jsonify({'message': 'Developer updated successfully!', 'developer': developer.to_dict()})
