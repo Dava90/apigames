@@ -13,7 +13,7 @@ def login():
   user = User.query.filter_by(username=username).first()
   if not user or not check_password_hash(user.password, password):
     return jsonify({'message': 'Invalid username or password'}), 401
-  access_token = create_access_token(identity=user.username, expires_delta=timedelta(hours=1))
+  access_token = create_access_token(identity=user.username, expires_delta=timedelta(hours=20))
   return jsonify({'access_token': access_token})
 
 
