@@ -30,7 +30,7 @@ def update_developer(id_dev):
         return jsonify({'status': 'error', 'message': 'Developer not found'}), 404
 
     data = request.get_json()
-    developer.name = data.get('name', developer.name)  # Ensure the 'name' field is updated
+    developer.name = data.get('name_dev', developer.name)  # Ensure the 'name' field is updated
     
     db.session.commit()
     return jsonify({'message': 'Developer updated successfully!', 'developer': developer.to_dict()})
