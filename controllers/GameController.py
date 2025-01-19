@@ -33,7 +33,7 @@ def add_game():
         publisher=data['publisher'],
         score=data['score'],
         rating=data['rating'],
-        platform=data['platform']
+        platform=data['platforms']
     )
     db.session.add(game)
     db.session.commit()
