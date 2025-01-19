@@ -19,7 +19,7 @@ def get_genre(genre_id):
 def add_genre():
     data = request.get_json()
     # Validasi input
-    if not data.get('name'):
+    if not data.get('nama_dev'):
         return jsonify({'status': 'error', 'message': 'Name is required'}), 400
     
     genre = Genre(name=data['name'])
