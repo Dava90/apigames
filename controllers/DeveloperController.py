@@ -18,7 +18,7 @@ def get_developer(id_dev):
 @jwt_required()
 def add_developer():
     data = request.get_json()
-    developer = Developer(name=data['name'])  # Using 'name' as per the column in the model
+    developer = Developer(name=data['nama_dev'])  # Using 'name' as per the column in the model
     db.session.add(developer)
     db.session.commit()
     return jsonify({'message': 'Developer added successfully!', 'developer': developer.to_dict()}), 201
