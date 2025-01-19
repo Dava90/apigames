@@ -22,7 +22,7 @@ def add_genre():
     if not data.get('nama_genre'):
         return jsonify({'status': 'error', 'message': 'Name is required'}), 400
     
-    genre = Genre(name=data['nama_genre'])
+    genre = Genre(nama_genre=data['nama_genre'])
     db.session.add(genre)
     db.session.commit()
     return jsonify({'message': 'Genre added successfully!', 'genre': genre.to_dict()}), 201
@@ -34,7 +34,7 @@ def update_genre(genre_id):
         return jsonify({'status': 'error', 'message': 'Genre not found'}), 404
 
     data = request.get_json()
-    genre.name = data.get('name', genre.name)  # Hanya memperbarui nama jika ada
+    genre.nama_genre = data.get('nama_genre', genre.nama_genre)  # Hanya memperbarui nama jika ada
 
     db.session.commit()
     return jsonify({'message': 'Genre updated successfully!', 'genre': genre.to_dict()})
