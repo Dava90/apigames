@@ -19,10 +19,10 @@ def get_genre(genre_id):
 def add_genre():
     data = request.get_json()
     # Validasi input
-    if not data.get('nama_dev'):
+    if not data.get('nama_genre'):
         return jsonify({'status': 'error', 'message': 'Name is required'}), 400
     
-    genre = Genre(name=data['name'])
+    genre = Genre(name=data['nama_genre'])
     db.session.add(genre)
     db.session.commit()
     return jsonify({'message': 'Genre added successfully!', 'genre': genre.to_dict()}), 201
