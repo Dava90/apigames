@@ -34,25 +34,47 @@ def check_password_hash(hashed_password, user_password):
 
 @jwt_required()
 def get_users():
-    users = User.query.all()
-    users =[]
+    users = User.query.all()  # Mendapatkan semua pengguna dari database
+    user_list = []  # Menyimpan detail pengguna
+
     for user in users:
-        #add details
-        users.append({
+        user_list.append({
             'id': user.id,
             'username': user.username,
             'fullname': user.fullname,
-            'password' : user.password
+            'password': user.password  # Anda mungkin ingin menghindari mengirimkan password secara langsung
         })
         
-    response ={
-        'status':'success',
-        'data':{
-            'users':users
+    response = {
+        'status': 'success',
+        'data': {
+            'users': user_list
         },
-        'message':'Users retrived successfully!'
+        'message': 'Users retrieved successfully!'
     }
+    
     return jsonify(response),200
+
+# def get_users():
+#     users = User.query.all()
+#     users =[]
+#     for user in users:
+#         #add details
+#         users.append({
+#             'id': user.id,
+#             'username': user.username,
+#             'fullname': user.fullname,
+#             'password' : user.password
+#         })
+        
+#     response ={
+#         'status':'success',
+#         'data':{
+#             'users':users
+#         },
+#         'message':'Users retrived successfully!'
+#     }
+#     return jsonify(response),200
 @jwt_required()
 def get_user(user_id):
     user = User.query.get(user_id)
